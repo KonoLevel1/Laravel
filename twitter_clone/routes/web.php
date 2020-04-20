@@ -13,10 +13,37 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+// タイムライン表示ページ
+Route::get('/timeline','TimelineController@index')->name('timeline.index');
+// つぶやき投稿
+Route::post('/timeline','TimelineController@up');
+// つぶやき削除
+Route::delete('/timeline','TimelineController@destroy');
+
+// ユーザー一覧表示
+Route::get('/users','UsersController@index')->name('users.index');
+
+// プロフィールを更新する
+Route::put('/profile','ProfileController@update');
+// アバター・プロフィール登録
+Route::post('/profile','ProfileController@store');
+
+// フォロー・フォロワー一覧表示
+Route::get('/follower','FollowerController@index')->name('follower.index');
+// フォロー
+Route::post('/follower','FollowerController@store');
+// フォロー解除
+Route::delete('/follower','FollowerController@destroy');
+
+// 
+// 
+// 
+/*
 Route::get('/', function () {
     return view('welcome');
 });
-
+*/
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
